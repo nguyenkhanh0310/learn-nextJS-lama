@@ -1,15 +1,16 @@
 import Links from "@/components/navbar/links/Links";
 import React from "react";
+import style from './navbar.module.css';
 
 const Navbar = () => {
 
   return (
-    <>
-      <div>Logo</div>
+    <div className={style.container}>
+      <div className={style.logo}>Logo</div>
       <div>
         <Links/>
       </div>
-    </>
+    </div>
   )
 };
 

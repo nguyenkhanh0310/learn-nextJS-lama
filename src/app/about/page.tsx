@@ -3,7 +3,7 @@ import React from 'react'
 const AboutPage = () => {
   return (
     <div>
-      About page
+      <img src='/about.png'/>
     </div>
   )
 }
