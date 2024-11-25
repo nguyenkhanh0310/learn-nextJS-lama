@@ -1,11 +1,11 @@
 "use client"
 import Image from "next/image";
 import styles from  "./contact.module.css"
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 // import HydrationTest from "@/components/hydrationTest";
 // import React, { useEffect, useState } from 'react'
 
-const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
+// const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
 const ContactPage = () => {
   // const [ isClient, setIsClient] = useState(false);
 
@@ -32,7 +32,7 @@ const ContactPage = () => {
       </div>
       <div className={styles.formContainer}>
         {/* {isClient && <div>{a}</div>} */}
-        <HydrationTestNoSSR/>
+        {/* <HydrationTestNoSSR/> */}
         {/* <div suppressHydrationWarning>{a}</div> */}
         <form action="" className={styles.form}>
           <input type="text" placeholder="Name and Surname"/>
