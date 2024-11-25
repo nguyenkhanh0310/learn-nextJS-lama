@@ -2,8 +2,38 @@ import React from "react";
 import styles from "./singlePost.module.css";
 import Image from "next/image";
 
-const SinglePostPage = ({params}) => {
-  console.log(params);
+// interface Post {
+//   id: number;
+//   userId: number;
+//   title: string;
+//   body: string;
+// }
+// const getData = async (): Promise<Post[]> => {
+//   const res = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${param.slug}`
+//   );
+//   if (!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
+//   return res.json();
+// };
+
+const getData = async (slug: any) => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+
+  return res.json();
+};
+
+const SinglePostPage = async ({ params }: any) => {
+  const { slug } = await params;
+  console.log(slug);
+  const post = await getData(slug);
+  // console.log(param.slug);
+
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -15,7 +45,7 @@ const SinglePostPage = ({params}) => {
         />
       </div>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           <Image
             className={styles.avatar}
@@ -35,9 +65,7 @@ const SinglePostPage = ({params}) => {
           </div>
         </div>
 
-        <div className={styles.content}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore incidunt dolor repellendus doloribus nulla, in laudantium sapiente ex nisi. Assumenda odit in voluptate provident dicta beatae adipisci id. Ab, atque.
-        </div>
+        <div className={styles.content}>{post.body}</div>
       </div>
     </div>
   );
