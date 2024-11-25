@@ -21,5 +21,5 @@ export const getPost = async (id: any) => {
 };
 
 export const getUser = async (id: any) => {
-  return users.find((user) => user.id === id);
+  return users.find((user) => user.id === parseInt(id));
 };
