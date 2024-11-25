@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./singlePost.module.css";
 import Image from "next/image";
+import PostUser from "@/components/postUser/postUser";
 
 // interface Post {
 //   id: number;
@@ -54,11 +55,9 @@ const SinglePostPage = async ({ params }: any) => {
             width={50}
             height={50}
           />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Terry Jefferson</span>
-          </div>
-
+          <Suspense fallback={<div>Loading...</div>}>
+            <PostUser userId={post.userId} />
+          </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
