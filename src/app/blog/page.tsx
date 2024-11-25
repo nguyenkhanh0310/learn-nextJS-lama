@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./blog.module.css";
 import PostCard from "@/components/postCard/postCard";
+import { getPosts } from "@/lib/data";
 
 // interface Post {
 //   id: number;
@@ -20,22 +21,27 @@ import PostCard from "@/components/postCard/postCard";
 //   if(!posts)
 // };
 
-const getData = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+// FETCH DATA WITH AN API
+// const getData = async () => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/posts")
 
-  if(!res.ok) {
-    throw new Error("Something went wrong")
-  }
+//   if(!res.ok) {
+//     throw new Error("Something went wrong")
+//   }
 
-  return res.json()
-}
+//   return res.json()
+// }
 
 const BlogPage = async () => {
-  const posts = await getData();
+  // FETCH DATA WITH AN API
+  // const posts = await getData();
+
+  // FETCH DATA WITHOUT AN API
+  const posts = await getPosts();
 
   return (
     <div className={styles.container}>
-      {posts.map((post:any) => (
+      {posts.map((post: any) => (
         <div className={styles.post} key={post.id}>
           <PostCard post={post} />
         </div>
